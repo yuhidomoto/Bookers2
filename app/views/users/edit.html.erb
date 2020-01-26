@@ -1,0 +1,38 @@
+<div class="container">
+ <div class="row">
+  <div class="col-xs-9">
+
+ 	<% if @user.errors.any? %>
+  <div class="alert alert-warning">
+    <%= pluralize(@user.errors.count,"error") %>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      </div>
+      <% end %>
+<% end %>
+
+<h2>User info</h2>
+<%= form_for(@user) do |f| %>
+
+<div class="edit-title">Name
+<%= f.text_field :name %>
+</div>
+
+<div class="edit-image">Image</div>
+<%= f.attachment_field :profile_image, placeholder: "Image", class: "user-edit-form" %>
+
+
+
+
+<br><div class="edit-body">Introduction
+<%= f.text_area :introduction %>
+</div><br>
+
+<div class="actions">
+     <input class="btn btn-default" type="submit" value="Update User">
+
+</div>
+<% end %>
+</div>
+</div>
+</div>
